@@ -28,6 +28,8 @@ export class Main {
     this.container.appendChild(this.renderer.threeRenderer.domElement);
 
     this._render();
+
+    this._setEvents();
   }
 
   _render() {
@@ -37,5 +39,20 @@ export class Main {
     requestAnimationFrame(this._render.bind(this));
 
     this.renderer.render(this.scene, this.camera.threeCamera);
+  }
+
+  _setEvents() {
+    window.addEventListener("resize", () => {
+      const { cameraWidth } = this.camera.threeCamera;
+      const newAspectRatio = this.container.offsetWidth / this.container.offsetHeight;
+      const adjustedCameraHeight = cameraWidth / newAspectRatio;
+
+      this.camera.threeCamera.top = adjustedCameraHeight / 2;
+      this.camera.threeCamera.bottom = adjustedCameraHeight / -2;
+      this.camera.threeCamera.updateProjectionMatrix();
+
+      this.renderer.updateSize();
+      this.renderer.threeRenderer.render(this.scene, this.camera.threeCamera);
+    });
   }
 }

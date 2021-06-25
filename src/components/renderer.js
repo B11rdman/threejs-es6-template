@@ -8,6 +8,10 @@ export default class Renderer {
     this._container.appendChild(this.threeRenderer.domElement);
   }
 
+  updateSize() {
+    this.threeRenderer.setSize(this._container.offsetWidth, this._container.offsetHeight);
+  }
+
   render(scene, camera) {
     this.threeRenderer.render(scene, camera);
   }
