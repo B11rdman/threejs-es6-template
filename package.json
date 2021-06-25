@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/B11rdman/threejs-es6-template.git.git"
+    "url": "git+https://github.com/B11rdman/threejs-es6-template.git"
   },
   "author": "Arsen Mazmanyan",
   "license": "MIT",
